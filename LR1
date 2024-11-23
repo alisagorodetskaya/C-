@@ -1,0 +1,17 @@
+#include <iostream>
+#include <cmath>
+
+int main() {
+    double a = 2;
+    double b = 11.05;
+
+    double numerator = 0.1 * log(exp(3));
+
+    double denominator = pow(sin((a / b) * M_PI), 2) + pow(cos((a / b) * M_PI), 2);
+
+    double result = pow(numerator / denominator, 1.0 / 3);
+
+    std::cout << "Result: " << result << std::endl;
+
+    return 0;
+}
