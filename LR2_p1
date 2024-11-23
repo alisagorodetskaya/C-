@@ -1,0 +1,24 @@
+#include <iostream>
+#include <cmath> 
+
+using namespace std;
+
+int main() {
+    double x, y;
+    cout << "Please enter x: ";
+    cin >> x;
+
+    if (x >= 0) {
+        y = exp(-x + 2);
+    } else {
+        if (x != -3.2) {
+            y = exp(-x) * sin(1.0 / (x + 3.2));
+        } else {
+            cout << "Error: The value of x + 3.2 cannot be equal to 0." << endl;
+            return 1;
+        }
+    }
+
+    cout << "Y: " << y << endl;
+    return 0;
+}
