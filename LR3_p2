@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    char letter;
+    cout << "Please enter the first letter of the country name:";
+    cin >> letter;
+
+    switch (tolower(letter)) {
+        case 'u':
+            cout << "Ukraine - Kyiv, population = 37 million (2023)" << endl;
+            break;
+        case 'p':
+            cout << "Poland - Warsaw, population = 36.69 million (2023)" << endl;
+            break;
+        case 's':
+            cout << "Slovakia - Bratislava, population = 2,12 million (2023)" << endl;
+            break;
+        case 'h':
+            cout << "Hungary - Budapest, population = 9,58 million (2024)" << endl;
+            break;
+        case 'r':
+            cout << "Romania - Bucharest, population = 19,06 million (2024)" << endl;
+            break;
+        case 'c':
+            cout << "Czech Republic - Prague, population = 10,9 million (2024)" << endl;
+            break;
+        case 'a':
+            cout << "Austria - Vienna, population = 9,03 million (2022)" << endl;
+            break;
+        default:
+            cout << "Please try again with other letter" << endl;
+    }
+
+    return 0;
+}
