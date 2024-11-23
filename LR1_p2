@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cmath>
+
+int main() {
+
+    double a = 3;
+    double b = 0.521;
+
+    double exponent = b / a;
+    double numerator = 0.127 * exp(exponent);
+
+    double angle = b * M_PI / a;
+    double cos_value = cos(angle);
+    double denominator = 1 - cbrt(cos_value);
+    double result = cbrt(pow(numerator / denominator, 2));
+
+    std::cout << "Result: " << result << std::endl;
+
+    return 0;
+}
