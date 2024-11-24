@@ -1,55 +1,27 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
-double calculateLnWhile(double x, double epsilon) {
-    double term = x;
-    double sum = term;
-    int n = 1;
-
-    while (fabs(term) >= epsilon) {
-        n++;
-        term *= -x * (n - 1) / n;
-        sum += term;
-    }
-
-    return sum;
-}
-
-double calculateLnDoWhile(double x, double epsilon) {
-    double term = x;
-    double sum = term;
-    int n = 1;
-
-    do {
-        n++;
-        term *= -x * (n - 1) / n;
-        sum += term;
-    } while (fabs(term) >= epsilon);
-
-    return sum;
-}
-
 int main() {
-    double x, epsilon;
+    int N;
 
-    cout << "Please enter the value of x (-1 < x <= 1):";
-    cin >> x;
+    cout << "Please enter a number N: ";
+    cin >> N;
 
-    if (x <= -1 || x > 1) {
-        cout << "Invalid value of x! It should be within (-1, 1]." << endl;
+    if (N <= 0) {
+        cout << "The number must be greater than 0." << endl;
         return 1;
     }
 
-    cout << "Please enter the precision of the calculation (epsilon): ";
-    cin >> epsilon;
+    int sum = 0;
+    while (N > 0) {
+        int digit = N % 10;
+        if (digit < 7) {
+            sum += digit;
+        }
+        N /= 10;
+    }
 
-    double resultWhile = calculateLnWhile(x, epsilon);
-    double resultDoWhile = calculateLnDoWhile(x, epsilon);
-
-    cout << "The result of the calculation using while: " << resultWhile << endl;
-    cout << "The result of the calculation using do...while: " << resultDoWhile << endl;
-    cout << "The exact value of ln(1 + x): " << log(1 + x) << endl;
+    cout << "The sum of digits less than 7 is: " << sum << endl;
 
     return 0;
 }
