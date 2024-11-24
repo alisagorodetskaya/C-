@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    double a, b, h;
+    cout << "Please enter a, b and h: ";
+    cin >> a >> b >> h;
+
+    cout << "-------------------" << endl;
+    cout << ":   X   :    Y    :" << endl;
+    cout << "-------------------" << endl;
+
+    double x = a;
+    while (x <= b) {
+        if (-x + 6 < 0) {
+            cout << ": " << setw(5) << x << " :  RPV(range of permissible values): " << endl;
+            cout << "-------------------" << endl;
+            break;
+        }
+
+        double y = 5 * pow(x, 3) + sqrt(-x + 6);
+
+        cout << ": " << setw(5) << x << " : " << setw(7) << fixed << setprecision(2) << y << " :" << endl;
+
+        x += h;
+    }
+
+    cout << "-------------------" << endl;
+
+    return 0;
+}
