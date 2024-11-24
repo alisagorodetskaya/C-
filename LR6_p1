@@ -2,24 +2,54 @@
 #include <cmath>
 using namespace std;
 
+double calculateLnWhile(double x, double epsilon) {
+    double term = x;
+    double sum = term;
+    int n = 1;
+
+    while (fabs(term) >= epsilon) {
+        n++;
+        term *= -x * (n - 1) / n;
+        sum += term;
+    }
+
+    return sum;
+}
+
+double calculateLnDoWhile(double x, double epsilon) {
+    double term = x;
+    double sum = term;
+    int n = 1;
+
+    do {
+        n++;
+        term *= -x * (n - 1) / n;
+        sum += term;
+    } while (fabs(term) >= epsilon);
+
+    return sum;
+}
+
 int main() {
-    double x[5];
-    double y[5];
+    double x, epsilon;
 
-    cout << "Enter five values of the argument x:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << "x[" << i + 1 << "]: ";
-        cin >> x[i];
+    cout << "Please enter the value of x (-1 < x <= 1):";
+    cin >> x;
+
+    if (x <= -1 || x > 1) {
+        cout << "Invalid value of x! It should be within (-1, 1]." << endl;
+        return 1;
     }
 
-    for (int i = 0; i < 5; i++) {
-        y[i] = pow(sin(x[i]), 5) + fabs(5 * x[i] - 1.5);
-    }
+    cout << "Please enter the precision of the calculation (epsilon): ";
+    cin >> epsilon;
 
-    cout << "\nCalculation results:" << endl;
-    for (int i = 0; i < 5; i++) {
-        cout << "For x = " << x[i] << ", y = " << y[i] << endl;
-    }
+    double resultWhile = calculateLnWhile(x, epsilon);
+    double resultDoWhile = calculateLnDoWhile(x, epsilon);
+
+    cout << "The result of the calculation using while: " << resultWhile << endl;
+    cout << "The result of the calculation using do...while: " << resultDoWhile << endl;
+    cout << "The exact value of ln(1 + x): " << log(1 + x) << endl;
 
     return 0;
 }
