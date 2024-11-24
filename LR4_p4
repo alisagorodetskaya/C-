@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int part1, part2, part3, part4;
+
+    cout << "Enter four numbers (1 to 255):" << endl;
+    cin >> part1 >> part2 >> part3 >> part4;
+
+    if ((part1 >= 1 && part1 <= 255) &&
+        (part2 >= 1 && part2 <= 255) &&
+        (part3 >= 1 && part3 <= 255) &&
+        (part4 >= 1 && part4 <= 255)) {
+        // Concatenate and print the IP address
+        cout << part1 << "." << part2 << "." << part3 << "." << part4 << endl;
+    } else {
+        // Invalid input
+        cout << "Error: All numbers must be in the range 1 to 255." << endl;
+    }
+
+    return 0;
+}
