@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    const int SIZE = 15;
+    int arr[SIZE];
+    int A;
+
+    srand(time(0));
+
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = rand() % 101;
+    }
+
+    std::cout << "Generated array: ";
+    for (int i = 0; i < SIZE; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    std::cout << "Please enter number A: ";
+    std::cin >> A;
+
+    int count = 0;
+    for (int i = 0; i < SIZE; i++) {
+        if (arr[i] > A) {
+            count++;
+        }
+    }
+
+    std::cout << "Number of array elements greater than " << A << ": " << count << std::endl;
+
+    return 0;
+}
