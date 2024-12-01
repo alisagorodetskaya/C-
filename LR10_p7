@@ -1,0 +1,38 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+int main() {
+    const int m = 3;
+    const int n = 3;
+    int arr[m][n];
+
+    srand(time(0));
+
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            arr[i][j] = rand() % 100 + 1;
+        }
+    }
+
+    std::cout << "Generated array:" << std::endl;
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            std::cout << arr[i][j] << "\t";
+        }
+        std::cout << std::endl;
+    }
+
+    int mainDiagonalSum = 0;
+    int secondaryDiagonalSum = 0;
+
+    for (int i = 0; i < m; i++) {
+        mainDiagonalSum += arr[i][i];
+        secondaryDiagonalSum += arr[i][n - i - 1];
+    }
+
+    std::cout << "Sum of main diagonal: " << mainDiagonalSum << std::endl;
+    std::cout << "Sum of secondary diagonal: " << secondaryDiagonalSum << std::endl;
+
+    return 0;
+}
