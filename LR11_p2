@@ -1,0 +1,56 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+struct Time {
+    int hours = 0;
+    int minutes = 0;
+};
+
+bool isValidTime(const Time& t) {
+    return t.hours >= 0 && t.hours < 24 && t.minutes >= 0 && t.minutes < 60;
+}
+
+Time calculateDuration(const Time& start, const Time& end) {
+    int startTotalMinutes = start.hours * 60 + start.minutes;
+    int endTotalMinutes = end.hours * 60 + end.minutes;
+
+    if (endTotalMinutes < startTotalMinutes) {
+        endTotalMinutes += 24 * 60;
+    }
+
+    int durationMinutes = endTotalMinutes - startTotalMinutes;
+
+    Time duration;
+    duration.hours = durationMinutes / 60;
+    duration.minutes = durationMinutes % 60;
+
+    return duration;
+}
+
+int main() {
+    Time startTime, endTime;
+
+    cout << "Enter the start time (hours and minutes):" << endl;
+    cin >> startTime.hours >> startTime.minutes;
+
+    if (!isValidTime(startTime)) {
+        cout << "Invalid start time. Hours should be [0, 23] and minutes [0, 59]." << endl;
+        return 1;
+    }
+
+    cout << "Enter the end time (hours and minutes):" << endl;
+    cin >> endTime.hours >> endTime.minutes;
+
+    if (!isValidTime(endTime)) {
+        cout << "Invalid end time. Hours should be [0, 23] and minutes [0, 59]." << endl;
+        return 1;
+    }
+
+    Time duration = calculateDuration(startTime, endTime);
+
+    cout << "Event duration: ";
+    cout << duration.hours << ":" << duration.minutes << endl;
+
+    return 0;
+}
