@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <climits>
+
+int main() {
+    const int SIZE = 10;
+    int arr[SIZE];
+
+    srand(time(0));
+
+    for (int i = 0; i < SIZE; i++) {
+        arr[i] = rand() % 100 + 1;
+    }
+
+    std::cout << "Generated array: ";
+    for (int i = 0; i < SIZE; i++) {
+        std::cout << arr[i] << " ";
+    }
+    std::cout << std::endl;
+
+    int max1 = INT_MIN, max2 = INT_MIN;
+    for (int i = 0; i < SIZE; i++) {
+        if (arr[i] > max1) {
+            max2 = max1;
+            max1 = arr[i];
+        } else if (arr[i] > max2 && arr[i] < max1) {
+            max2 = arr[i];
+        }
+    }
+
+    if (max2 == INT_MIN) {
+        std::cout << "all numbers are the same" << std::endl;
+    } else {
+        std::cout << "The second largest element: " << max2 << std::endl;
+    }
+
+    return 0;
+}
