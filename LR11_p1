@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+struct Time {
+    int hours;
+    int minutes;
+};
+
+int main() {
+    Time startTime;
+    int addedMinutes;
+
+    cout << "Enter the starting time (hours and minutes):" << endl;
+    cin >> startTime.hours >> startTime.minutes;
+
+    if (startTime.hours < 0 || startTime.hours >= 24 || startTime.minutes < 0 || startTime.minutes >= 60) {
+        cout << "Invalid time entered. Hours should be [0, 23] and minutes [0, 59]." << endl;
+        return 1;
+    }
+
+    cout << "Enter the number of minutes to add:" << endl;
+    cin >> addedMinutes;
+
+    Time resultTime = startTime;
+    resultTime.minutes += addedMinutes;
+    resultTime.hours += resultTime.minutes / 60;
+    resultTime.minutes %= 60;
+    resultTime.hours %= 24;
+
+    cout << "Resulting time: ";
+    cout << setw(2) << setfill('0') << resultTime.hours << ":"
+         << setw(2) << setfill('0') << resultTime.minutes << endl;
+
+    return 0;
+}
